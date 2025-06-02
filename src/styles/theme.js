@@ -7,9 +7,14 @@ const theme = extendTheme({
   },
   styles: {
     global: {
+      html: {
+        fontFamily: 'Inter',
+      },
       body: {
         bg: 'brand.whiteSoft',
         color: 'brand.blackSoft',
+        margin: 0,
+        padding: 0,
       },
     },
   },
