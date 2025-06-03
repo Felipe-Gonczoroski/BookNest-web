@@ -10,7 +10,7 @@ import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 export const Input = (props) => {
   return (
     <ChakraInput
-      w="26rem"
+      w={['100%', '26rem']}
       h="3.5rem"
       fontSize="1rem"
       focusBorderColor="brand.primary"
@@ -37,12 +37,12 @@ Input.Password = (props) => {
         type={show ? 'text' : 'password'}
         placeholder="*************"
       />
-      <InputRightElement width="3.5rem" height="3.5rem">
+      <InputRightElement width={['3.2rem', '3.5rem']} height="3.5rem">
         <Button
           display="flex"
           alignItems="center"
           justifyContent="center"
-          w="100%"
+          w={['50%', '100%']}
           size="sm"
           bg="transparent"
           _hover={{ bg: 'transparent' }}
