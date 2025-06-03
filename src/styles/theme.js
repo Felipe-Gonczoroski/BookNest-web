@@ -11,8 +11,8 @@ const theme = extendTheme({
         fontFamily: 'Inter',
       },
       body: {
-        bg: 'brand.whiteSoft',
-        color: 'brand.blackSoft',
+        bg: 'brand.white',
+        color: 'brand.black',
         margin: 0,
         padding: 0,
       },
