@@ -1,9 +1,30 @@
 import { Flex, Image } from '@chakra-ui/react';
 import { Text, Input, Link, Button } from 'components';
 import { useNavigate } from 'react-router-dom';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 
 export const LoginScreen = () => {
   const navigate = useNavigate();
+
+  const { handleSubmit, values, handleChange, errors } = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+    },
+    validationSchema: Yup.object({
+      email: Yup.string()
+        .email('Endereço de email inválido')
+        .required('Email é obrigatório'),
+      password: Yup.string()
+        .min(6, 'A senha deve conter ao menos 6 caracteres.')
+        .required('Senha é obrigatória'),
+    }),
+    onSubmit: (data) => {
+      console.log({ data });
+    },
+  });
+
   return (
     <Flex w="100vw" h="100vh">
       <Flex
@@ -23,14 +44,33 @@ export const LoginScreen = () => {
           />
           <Text.ScreenTitle mt="3.5rem">Login</Text.ScreenTitle>
 
-          <Input mt="1.2rem" placeholder="exemplo@gmail.com" />
-          <Input.Password mt="1.3rem" />
+          <Input
+            id="email"
+            name="email"
+            value={values.email}
+            onChange={handleChange}
+            placeholder="exemplo@gmail.com"
+            error={errors.email}
+            mt="1.2rem"
+          />
+          <Input.Password
+            id="password"
+            name="password"
+            value={values.password}
+            onChange={handleChange}
+            error={errors.password}
+            mt="1.3rem"
+          />
 
           <Flex w="100%" mt="1rem" justifyContent="flex-end">
-            <Link>Esqueceu sua senha?</Link>
+            <Link onClick={() => navigate('/forgot-password')}>
+              Esqueceu sua senha?
+            </Link>
           </Flex>
 
-          <Button mt="1.2rem">Login</Button>
+          <Button onClick={handleSubmit} mt="1.2rem">
+            Login
+          </Button>
 
           <Flex align="center" justifyContent="center" mt="2.5rem">
             <Text>Não possui uma conta?</Text>

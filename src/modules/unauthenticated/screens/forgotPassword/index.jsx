@@ -1,8 +1,8 @@
 import { Flex, Image } from '@chakra-ui/react';
-import { Text, Input, Link, Button } from 'components';
+import { Text, Input, Button } from 'components';
 import { useNavigate } from 'react-router-dom';
 
-export const RegisterScreen = () => {
+export const ForgotPasswordScreen = () => {
   const navigate = useNavigate();
   return (
     <Flex w="100vw" h="100vh">
@@ -21,27 +21,16 @@ export const RegisterScreen = () => {
             w="160px"
             objectFit="contain"
           />
-          <Text.ScreenTitle mt="3.5rem">Cadastro</Text.ScreenTitle>
+          <Text.ScreenTitle mt="3.3rem">Esqueceu senha</Text.ScreenTitle>
+          <Text mt="0.9rem">
+            Digite abaixo seu e-mail que enviaremos um código de recuperação de
+            senha:
+          </Text>
+          <Input mt="1.3rem" placeholder="E-mail" />
 
-          <Input mt="1.2rem" placeholder="Nome completo" />
-          <Input mt="1.2rem" placeholder="E-mail" />
-          <Input.Password mt="1.3rem" placeholder="Senha" />
-          <Input.Password mt="1.3rem" placeholder="Confirmar senha" />
-
-          <Button mt="1.5rem">Cadastrar</Button>
-
-          <Flex align="center" justifyContent="center" mt="2.5rem">
-            <Text>Possui uma conta?</Text>
-            <Link
-              fontSize="1rem"
-              fontWeight="bold"
-              color="brand.black"
-              ml="0.3rem"
-              onClick={() => navigate('/')}
-            >
-              Faça login aqui.
-            </Link>
-          </Flex>
+          <Button mt="1.5rem" onClick={() => navigate('/reset-password')}>
+            Avançar
+          </Button>
         </Flex>
       </Flex>
       <Flex
